@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "firstname": "Dairy",
+      "secondname": "Milk"
+    },
+    {
+      "firstname": "Kit",
+      "secondname": "kat"
+    },
+    {
+      "firstname": "five",
+      "secondname": "star"
+    }
+  ]
+}

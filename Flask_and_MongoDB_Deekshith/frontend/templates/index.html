@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit your details</title>
+    <style>
+        :root { --bg: #f7f7f5; --card: #ffffff; --text: #1d2327; --muted: #5d676e; --line: #d5d9dc; --accent: #1f6f5c; --error-bg: #fdecea; --error: #a32018; }
+        @media (prefers-color-scheme: dark) {
+            :root { --bg: #15191b; --card: #1e2326; --text: #e8ecee; --muted: #9aa5ab; --line: #343c40; --accent: #4fb39b; --error-bg: #3a1f1c; --error: #ff9b91; }
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--bg); color: var(--text); font-family: Georgia, "Times New Roman", serif; }
+        .card { width: 100%; max-width: 440px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 32px; }
+        h1 { margin: 0 0 6px; font-size: 1.6rem; }
+        p.sub { margin: 0 0 24px; color: var(--muted); }
+        label { display: block; margin: 16px 0 6px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 10px 12px; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
+        input:focus, textarea:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+        textarea { min-height: 90px; resize: vertical; }
+        button { margin-top: 24px; width: 100%; padding: 12px; font: inherit; font-weight: bold; color: #fff; background: var(--accent); border: 0; border-radius: 6px; cursor: pointer; }
+        .error { margin-bottom: 8px; padding: 12px; background: var(--error-bg); color: var(--error); border-radius: 6px; word-break: break-word; }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Submit your details</h1>
+        <p class="sub">Your answers are saved to MongoDB Atlas.</p>
+
+        {% if error %}
+        <div class="error" role="alert">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="{{ name }}" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ email }}" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message">{{ message }}</textarea>
+
+            <button type="submit">Save details</button>
+        </form>
+    </main>
+</body>
+</html>
